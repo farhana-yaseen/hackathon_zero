@@ -1,0 +1,7 @@
+{
+  "sender": "Boss Person",
+  "phone_number": "+1234567890",
+  "body": "Urgent: Please prepare the quarterly report ASAP for tomorrow's meeting.",
+  "is_important": true,
+  "priority": "high"
+}

@@ -413,7 +413,7 @@ scheduled_at: "{datetime.now().isoformat()}"
         # Handle potential filename conflicts
         counter = 1
         original_dest_path = dest_path
-        while os.path.exists(dest_path) and dest_path != original_dest_path:
+        while os.path.exists(dest_path):
             name_part, ext = os.path.splitext(original_dest_path)
             dest_path = f"{name_part}_{counter}{ext}"
             counter += 1

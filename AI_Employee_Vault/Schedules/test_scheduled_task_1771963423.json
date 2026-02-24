@@ -1,0 +1,9 @@
+{
+  "id": "test_task_1771963423",
+  "name": "Silver Tier Test Task",
+  "execute_time": "2026-02-25T01:04:43.308742",
+  "status": "pending",
+  "recurring": false,
+  "recurrence_interval": null,
+  "created_at": "2026-02-25T01:03:43.308816"
+}

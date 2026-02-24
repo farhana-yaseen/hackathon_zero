@@ -66,10 +66,7 @@ class ApprovalSystem:
             content = f.read()
 
         # Update status to approved
-        updated_content = self._update_approval_status(content, "approved", approver_notes)
-
-        with open(approval_file, 'w', encoding='utf-8') as f:
-            f.write(updated_content)
+        updated_content = self._update_approval_status(content, "approved", approver_notes, approval_file, request_id)
 
         logger.info(f"Approved request: {request_id}")
         return True
@@ -84,10 +81,7 @@ class ApprovalSystem:
             content = f.read()
 
         # Update status to denied
-        updated_content = self._update_approval_status(content, "denied", approver_notes, reason)
-
-        with open(approval_file, 'w', encoding='utf-8') as f:
-            f.write(updated_content)
+        updated_content = self._update_approval_status(content, "denied", approver_notes, approval_file, request_id, reason)
 
         logger.info(f"Denied request: {request_id}")
         return True
@@ -102,10 +96,7 @@ class ApprovalSystem:
             content = f.read()
 
         # Update status to deferred
-        updated_content = self._update_approval_status(content, "deferred", approver_notes, reason)
-
-        with open(approval_file, 'w', encoding='utf-8') as f:
-            f.write(updated_content)
+        updated_content = self._update_approval_status(content, "deferred", approver_notes, approval_file, request_id, reason)
 
         logger.info(f"Deferred request: {request_id}")
         return True
@@ -131,7 +122,7 @@ class ApprovalSystem:
 
         return None
 
-    def _update_approval_status(self, content, status, approver_notes="", reason=""):
+    def _update_approval_status(self, content, status, approver_notes, approval_file, request_id, reason=""):
         """Update the status in the markdown content."""
         # Update frontmatter status
         frontmatter_updated = False
@@ -152,6 +143,7 @@ class ApprovalSystem:
                         updated_lines.append(f'status: "{status}"')
                     else:
                         updated_lines.append(fm_line)
+                updated_lines.append(line)
                 frontmatter_updated = True
             elif in_frontmatter:
                 frontmatter_lines.append(line)
@@ -177,16 +169,12 @@ class ApprovalSystem:
         updated_content += approval_details
 
         # Move the file to appropriate folder based on status
-        file_dir, file_name = os.path.split(self._find_approval_file_by_id(
-            re.search(r'request_id:\s*["\']?([^"\'\n\r]*)', content).group(1)
-        ))
+        file_name = os.path.basename(approval_file)
         new_folder = "Done" if status == "approved" else "Inbox"
         new_path = os.path.join(self.vault_path, new_folder, file_name)
 
         # Remove the old file and save the new one
-        os.remove(self._find_approval_file_by_id(
-            re.search(r'request_id:\s*["\']?([^"\'\n\r]*)', content).group(1)
-        ))
+        os.remove(approval_file)
         with open(new_path, 'w', encoding='utf-8') as f:
             f.write(updated_content)
 

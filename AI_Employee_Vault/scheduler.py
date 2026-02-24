@@ -100,8 +100,7 @@ class Scheduler:
 
         for task in self.tasks:
             if (task.status == TaskStatus.PENDING and
-                task.execute_time <= now and
-                task.execute_time >= self.created_at):
+                task.execute_time <= now):
                 due_tasks.append(task)
 
         return due_tasks
