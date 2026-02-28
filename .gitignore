@@ -8,9 +8,17 @@ wheels/
 
 # Virtual environments
 .venv
-credentials.json
 
-session/                  
+# Sensitive credentials and tokens
+credentials.json
+token.pickle
+*.pickle
+linkedin_token.json
+AI_Employee_Vault/credentials.json
+AI_Employee_Vault/token.pickle
+AI_Employee_Vault/linkedin_token.json
+.env
+
+session/
 *.tokens
 node_modules/
-.env
