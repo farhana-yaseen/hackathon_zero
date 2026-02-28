@@ -68,6 +68,12 @@ class FileSystemWatcher(BaseWatcher):
 
                     # Check if file is new or modified
                     if filepath not in self.file_hashes:
+                        # Skip files created by watchers to avoid recursion
+                        filename = os.path.basename(filepath)
+                        if filename.startswith('fs_created_') or filename.startswith('email_') or filename.startswith('sent_') or filename.startswith('whatsapp_'):
+                            self.file_hashes[filepath] = current_hash
+                            continue
+
                         # New file
                         change_event = {
                             'type': 'created',

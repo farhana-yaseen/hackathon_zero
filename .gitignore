@@ -13,3 +13,4 @@ credentials.json
 session/                  
 *.tokens
 node_modules/
+.env

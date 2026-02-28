@@ -23,6 +23,7 @@ class GmailWatcher(BaseWatcher):
 
     def __init__(self, vault_path: str, interval: int = 60, max_emails_per_run: int = 10):
         super().__init__(vault_path, interval)
+        
         self.max_emails_per_run = max_emails_per_run
         self.service = self.authenticate_gmail()
 
@@ -58,7 +59,7 @@ class GmailWatcher(BaseWatcher):
         return build('gmail', 'v1', credentials=creds)
 
     def check_for_updates(self):
-        """Check Gmail for new important/unread emails."""
+        """Check Gmail for new unread emails and sent emails."""
         try:
             # Calculate the time window (last check or last hour if no previous check)
             if self.last_check:
@@ -69,16 +70,30 @@ class GmailWatcher(BaseWatcher):
             # Format the query time for Gmail API
             query_time_str = query_time.strftime('%Y/%m/%d %H:%M:%S')
 
-            # Query for unread important emails
-            query = f'is:unread after:{query_time_str}'
-            results = self.service.users().messages().list(
-                userId='me', q=query, maxResults=self.max_emails_per_run).execute()
-            messages = results.get('messages', [])
-
             emails = []
-            for msg in messages:
+
+            # Query for unread emails (received)
+            query_received = f'is:unread after:{query_time_str}'
+            results_received = self.service.users().messages().list(
+                userId='me', q=query_received, maxResults=self.max_emails_per_run).execute()
+            messages_received = results_received.get('messages', [])
+
+            for msg in messages_received:
                 email_data = self.get_email_details(msg['id'])
                 if email_data:
+                    email_data['email_type'] = 'received'
+                    emails.append(email_data)
+
+            # Query for sent emails
+            query_sent = f'in:sent after:{query_time_str}'
+            results_sent = self.service.users().messages().list(
+                userId='me', q=query_sent, maxResults=self.max_emails_per_run).execute()
+            messages_sent = results_sent.get('messages', [])
+
+            for msg in messages_sent:
+                email_data = self.get_email_details(msg['id'])
+                if email_data:
+                    email_data['email_type'] = 'sent'
                     emails.append(email_data)
 
             return emails
@@ -108,7 +123,7 @@ class GmailWatcher(BaseWatcher):
                 'date': headers.get('date', ''),
                 'body': body[:2000],  # Limit body length
                 'is_important': is_important,
-                'labels': [label['name'] for label in message.get('labelIds', [])],
+                'labels': message.get('labelIds', []),
                 'size_estimate': message.get('sizeEstimate', 0),
                 'snippet': message.get('snippet', ''),
             }
@@ -166,8 +181,12 @@ class GmailWatcher(BaseWatcher):
 
     def create_markdown_file(self, email_data):
         """Create a markdown file for the email in the appropriate vault folder."""
-        # Determine folder based on importance
-        if email_data['is_important']:
+        # Determine folder based on email type and importance
+        email_type = email_data.get('email_type', 'received')
+
+        if email_type == 'sent':
+            folder = 'Sent'
+        elif email_data['is_important']:
             folder = 'Needs_Action'
         else:
             folder = 'Inbox'
@@ -180,6 +199,7 @@ class GmailWatcher(BaseWatcher):
         # Create frontmatter with email details
         frontmatter = f"""---
 type: email
+email_type: {email_type}
 from: "{email_data['from']}"
 to: "{email_data['to']}"
 subject: "{email_data['subject']}"
@@ -194,10 +214,16 @@ id: "{email_data['id']}"
         # Create suggested actions based on content
         suggested_actions = self.generate_suggested_actions(email_data)
 
+        # Adjust header based on email type
+        if email_type == 'sent':
+            header = f"# Email sent to {email_data['to']}"
+        else:
+            header = f"# Email from {email_data['from']}"
+
         # Combine everything
         content = f"""{frontmatter}
 
-# Email from {email_data['from']}
+{header}
 
 **Subject:** {email_data['subject']}
 
@@ -220,7 +246,10 @@ id: "{email_data['id']}"
 
         # Create filename with timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"email_{timestamp}_{subject}"
+        if email_type == 'sent':
+            filename = f"sent_{timestamp}_{subject}"
+        else:
+            filename = f"email_{timestamp}_{subject}"
 
         return self.write_to_vault(folder, filename, content)
 

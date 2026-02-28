@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "0a181f9203db1ff9",
+        "id": "85f83d49f5bf778d",
         "type": "tabs",
         "children": [
           {
-            "id": "a892a977fa897989",
+            "id": "6ce140520747471d",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -176,26 +176,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "a892a977fa897989",
+  "active": "cd83462339d61245",
   "lastOpenFiles": [
-    "Company_Handbook.md",
-    "Schedules/test_scheduled_task_1771963423.json",
-    "Needs_Action/approval_test_20260225_010343.md",
-    "Inbox/test_file_20260225_010343.txt",
-    "WhatsApp_Sim/whatsapp_msg_20260225_010343.json",
-    "__pycache__/test_silver_tier.cpython-313.pyc",
-    "Schedules/scheduled_task_task_1771963389_0.json",
-    "Schedules/scheduled_task_task_1771963368_0.json",
-    "Schedules/test_scheduled_task_1771963344.json",
-    "Needs_Action/approval_test_20260225_010224.md",
-    "Inbox/test_file_20260225_010224.txt",
-    "WhatsApp_Sim/whatsapp_msg_20260225_010224.json",
-    "Schedules/test_scheduled_task_1771963134.json",
-    "Needs_Action/approval_test_20260225_005854.md",
-    "setup_gmail_credentials.md",
-    "Plans/Plan_2026-02-22.md",
-    "Dashboard.md",
-    "SKILL.md",
-    "README.md"
+    "Inbox/email_test.md",
+    "Inbox/new_test_file.txt",
+    "Inbox/test_legitimate_file.txt",
+    "Inbox/fs_deleted_20260301_024721_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md.md",
+    "LinkedIn_Triggers/example_business_tip.json",
+    "LinkedIn_Triggers/example_success_story.json",
+    "LinkedIn_Triggers/example_product_launch.json",
+    "LinkedIn_Posts",
+    "LinkedIn_Triggers",
+    "scripts/authenticate_linkedin.py",
+    "setup_linkedin_api.md",
+    "scripts/linkedin_watcher.py",
+    "Inbox/fs_created_20260301_012207_fs_modified_20260301_012157_fs_created_20260301_011156_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md.md",
+    "Inbox/fs_created_20260301_012207_fs_created_20260301_012157_fs_created_20260301_012147_fs_modified_20260301_012137_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md_md.md",
+    "Inbox/fs_created_20260301_012207_fs_created_20260301_012157_fs_created_20260301_012147_fs_created_20260301_012137_fs_created_20260301_012127_fs_modified_20260301_012117_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md_md_md_md.md",
+    "Inbox/fs_created_20260301_012157_fs_created_20260301_012147_fs_modified_20260301_012137_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md.md",
+    "Inbox/fs_created_20260301_012157_fs_created_20260301_012147_fs_created_20260301_012137_fs_created_20260301_012127_fs_modified_20260301_012117_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md_md_md.md",
+    "Inbox/fs_modified_20260301_012157_fs_created_20260301_011156_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md.md",
+    "Inbox/fs_created_20260301_012147_fs_modified_20260301_012137_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md.md",
+    "Inbox/fs_created_20260301_012147_fs_created_20260301_012137_fs_created_20260301_012127_fs_modified_20260301_012117_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md_md.md",
+    "Inbox/fs_created_20260301_012137_fs_created_20260301_012127_fs_modified_20260301_012117_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md.md",
+    "Inbox/fs_modified_20260301_012137_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md.md",
+    "Inbox/fs_created_20260301_011146_email_20260301_005527_no_subject_md.md",
+    "Inbox/fs_created_20260301_012127_fs_modified_20260301_012117_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md.md",
+    "Inbox/fs_modified_20260301_012117_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md.md",
+    "Inbox/fs_created_20260301_011736_fs_created_20260301_011726_fs_created_20260301_011716_fs_created_20260301_011706_fs_created_20260301_011656_fs_created_20260301_011646_fs_deleted_20260301_011636_email_20260301_005527_no_subject_md_md_md_md_md_md_md.md",
+    "Inbox/fs_created_20260301_011726_fs_created_20260301_011716_fs_created_20260301_011706_fs_created_20260301_011656_fs_created_20260301_011646_fs_deleted_20260301_011636_email_20260301_005527_no_subject_md_md_md_md_md_md.md",
+    "Inbox/fs_created_20260301_011716_fs_created_20260301_011706_fs_created_20260301_011656_fs_created_20260301_011646_fs_deleted_20260301_011636_email_20260301_005527_no_subject_md_md_md_md_md.md",
+    "Inbox/fs_created_20260301_011706_fs_created_20260301_011656_fs_created_20260301_011646_fs_deleted_20260301_011636_email_20260301_005527_no_subject_md_md_md_md.md",
+    "Inbox/fs_created_20260301_011656_fs_created_20260301_011646_fs_deleted_20260301_011636_email_20260301_005527_no_subject_md_md_md.md",
+    "Inbox/fs_created_20260301_011646_fs_deleted_20260301_011636_email_20260301_005527_no_subject_md_md.md",
+    "Inbox/fs_deleted_20260301_011636_email_20260301_005527_no_subject_md.md",
+    "Inbox/fs_created_20260301_011246_fs_created_20260301_011236_fs_created_20260301_011226_fs_created_20260301_011216_fs_created_20260301_011206_fs_created_20260301_011156_fs_created_20260301_011146_email_20260301_005527_no_subject_md_md_md_md_md_md_md.md",
+    "Inbox/fs_modified_20260301_011246_email_20260301_005527_no_subject_md.md",
+    "Inbox/email_20260301_005527_no_subject.md",
+    "Sent"
   ]
 }

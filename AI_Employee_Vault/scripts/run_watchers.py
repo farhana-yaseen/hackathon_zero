@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Script to run all watchers simultaneously.
-Supports Gmail, WhatsApp, and File System watchers.
+Supports Gmail, WhatsApp, File System, and LinkedIn watchers.
 """
 
 import os
@@ -11,6 +11,7 @@ import sys
 from gmail_watcher import GmailWatcher
 from whatsapp_watcher import WhatsAppWatcher
 from file_system_watcher import FileSystemWatcher
+from linkedin_watcher import LinkedInWatcher
 
 def run_gmail_watcher(vault_path):
     """Run the Gmail watcher in a separate thread."""
@@ -46,6 +47,16 @@ def run_file_system_watcher(vault_path):
     except Exception as e:
         print(f"Error in File System watcher: {str(e)}")
 
+def run_linkedin_watcher(vault_path):
+    """Run the LinkedIn watcher in a separate thread."""
+    try:
+        watcher = LinkedInWatcher(vault_path, interval=3600)  # Check every hour
+        watcher.run_continuous()
+    except KeyboardInterrupt:
+        print("LinkedIn watcher stopped.")
+    except Exception as e:
+        print(f"Error in LinkedIn watcher: {str(e)}")
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: python run_watchers.py <vault_path>")
@@ -67,7 +78,11 @@ def main():
     fs_thread = threading.Thread(target=run_file_system_watcher, args=(vault_path,), daemon=True)
     fs_thread.start()
 
-    print("All watchers started. Press Ctrl+C to stop.")
+    # Start LinkedIn watcher in a separate thread
+    linkedin_thread = threading.Thread(target=run_linkedin_watcher, args=(vault_path,), daemon=True)
+    linkedin_thread.start()
+
+    print("All watchers started (Gmail, WhatsApp, File System, LinkedIn). Press Ctrl+C to stop.")
 
     try:
         # Keep the main thread alive
