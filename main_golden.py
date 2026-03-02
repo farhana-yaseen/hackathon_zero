@@ -2,9 +2,9 @@
 """
 Main entry point for the hackathon-zero project.
 
-This script starts the appropriate Tier orchestration for the Personal AI Employee.
-Supports Bronze, Silver, and Golden Tiers.
+This script starts the Golden Tier orchestration for the Personal AI Employee.
 """
+
 import subprocess
 import sys
 import os
@@ -13,9 +13,9 @@ import argparse
 
 
 def main():
-    parser = argparse.ArgumentParser(description="AI Employee Tier Orchestration")
-    parser.add_argument("--tier", choices=["bronze", "silver", "golden"], default="silver",
-                        help="Select which tier to run (default: silver)")
+    parser = argparse.ArgumentParser(description="Golden Tier Orchestration for Personal AI Employee")
+    parser.add_argument("--tier", choices=["bronze", "silver", "golden"], default="golden",
+                        help="Select which tier to run (default: golden)")
     parser.add_argument("--vault-path", default=None,
                         help="Path to the vault directory (defaults to AI_Employee_Vault)")
 
@@ -44,15 +44,9 @@ def main():
 
         try:
             # Run the golden tier orchestration
-            golden_tier_path = os.path.join(vault_path, "scripts", "golden_tier.py")
-            if not os.path.exists(golden_tier_path):
-                print(f"Error: Golden Tier script does not exist: {golden_tier_path}")
-                print("Please make sure golden_tier.py is in the vault/scripts directory.")
-                sys.exit(1)
-
             result = subprocess.run([
                 sys.executable,
-                golden_tier_path,
+                os.path.join(vault_path, "scripts", "golden_tier.py"),
                 "--vault-path", vault_path
             ], check=True)
 

@@ -1,0 +1,28 @@
+{
+  "report_date": "2026-03-03T00:56:59.444795",
+  "platforms": {
+    "facebook": {
+      "followers": 1250,
+      "engagement_rate": 3.2,
+      "reach": 8500,
+      "impressions": 12500
+    },
+    "twitter": {
+      "followers": 890,
+      "engagement_rate": 2.8,
+      "reach": 6200,
+      "impressions": 9800
+    },
+    "instagram": {
+      "followers": 2100,
+      "engagement_rate": 4.1,
+      "reach": 15600,
+      "impressions": 28400
+    }
+  },
+  "summary": {
+    "total_followers": 4240,
+    "avg_engagement": 3.37,
+    "total_impressions": 50700
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "odoo": {
+    "url": "http://localhost:8069",
+    "database": "odoo_db",
+    "username": "admin",
+    "password": "password"
+  },
+  "social_media": {
+    "facebook": {
+      "enabled": true,
+      "access_token": "YOUR_FACEBOOK_TOKEN_HERE",
+      "page_id": "YOUR_PAGE_ID_HERE"
+    },
+    "instagram": {
+      "enabled": true,
+      "access_token": "YOUR_INSTAGRAM_TOKEN_HERE"
+    },
+    "twitter": {
+      "enabled": true,
+      "bearer_token": "YOUR_TWITTER_BEARER_TOKEN_HERE",
+      "api_key": "YOUR_TWITTER_API_KEY_HERE",
+      "api_secret": "YOUR_TWITTER_API_SECRET_HERE",
+      "access_token": "YOUR_TWITTER_ACCESS_TOKEN_HERE",
+      "access_token_secret": "YOUR_TWITTER_ACCESS_TOKEN_SECRET_HERE"
+    }
+  },
+  "cross_domain": {
+    "sync_enabled": true,
+    "personal_directories": ["Personal", "Private"],
+    "business_directories": ["Business", "Company"],
+    "sync_frequency_minutes": 60
+  },
+  "auditing": {
+    "weekly_reports_day": "monday",
+    "weekly_reports_time": "06:00",
+    "retention_days": 90
+  },
+  "ralph_wiggum_loop": {
+    "max_attempts": 5,
+    "check_interval_seconds": 30,
+    "retry_on_failure": true
+  },
+  "logging": {
+    "log_level": "INFO",
+    "log_retention_days": 30,
+    "error_reporting_enabled": true
+  }
+}
