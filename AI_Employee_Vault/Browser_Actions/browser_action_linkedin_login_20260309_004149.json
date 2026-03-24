@@ -1,0 +1,10 @@
+{
+  "type": "browser_action",
+  "action": "linkedin_login",
+  "details": {
+    "status": "failed",
+    "error": "Timeout 10000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/feed**\" until 'load'\n============================================================",
+    "timestamp": "2026-03-09T00:41:49.937426"
+  },
+  "timestamp": "2026-03-09T00:41:49.937726"
+}

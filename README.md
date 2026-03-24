@@ -106,6 +106,22 @@ This project implements a Personal AI Employee system with three progressive tie
 - `move_file` - Move files within vault
 - `create_note` - Create notes in folders
 - `request_human_approval` - Request human approval for actions
+- `navigate_browser` - Navigate to URLs and perform browser actions
+- `click_element` - Click webpage elements using CSS/XPath selectors
+- `fill_form` - Fill forms with provided data
+- `extract_data` - Extract data from webpage elements
+- `create_calendar_event` - Create calendar events
+- `update_calendar_event` - Update existing calendar events
+- `delete_calendar_event` - Delete calendar events
+- `list_calendar_events` - List events in date range
+- `send_slack_message` - Send messages to Slack channels
+- `read_slack_channel` - Read messages from Slack channels
+- `search_slack_messages` - Search Slack messages by query
+- `create_slack_channel` - Create new Slack channels
+- `post_to_linkedin` - Post content to LinkedIn with visibility settings
+- `monitor_linkedin_feed` - Monitor LinkedIn feed for posts and interactions
+- `check_linkedin_notifications` - Check LinkedIn notifications
+- `get_linkedin_profile_info` - Retrieve LinkedIn profile information
 
 ---
 

@@ -1,0 +1,7 @@
+{
+  "sender": "Important Client",
+  "phone_number": "+1987654321",
+  "body": "Urgent: We need to discuss the contract renewal immediately. Can you call me back?",
+  "is_important": true,
+  "priority": "high"
+}

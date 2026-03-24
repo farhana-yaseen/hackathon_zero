@@ -1,0 +1,7 @@
+{
+  "sender": "Client Manager",
+  "phone_number": "+1987654321",
+  "body": "Hi, we need to discuss the contract renewal tomorrow. Can you prepare the documents?",
+  "is_important": true,
+  "priority": "high"
+}
