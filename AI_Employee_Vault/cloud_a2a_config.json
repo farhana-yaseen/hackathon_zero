@@ -1,0 +1,29 @@
+{
+  "a2a": {
+    "enabled": true,
+    "server": {
+      "host": "0.0.0.0",
+      "port": 8090,
+      "use_https": true,
+      "cert_path": "/etc/letsencrypt/live/yourdomain.com/fullchain.pem",
+      "key_path": "/etc/letsencrypt/live/yourdomain.com/privkey.pem"
+    },
+    "local_agent": {
+      "url": "http://YOUR_HOME_IP:8090/a2a/v1",
+      "fallback_to_vault": true
+    },
+    "auth": {
+      "secret_key_env": "A2A_SECRET_KEY"
+    },
+    "timeouts": {
+      "message_timeout_seconds": 30,
+      "heartbeat_interval_seconds": 60
+    },
+    "features": {
+      "auto_draft_emails": true,
+      "auto_draft_social_posts": true,
+      "auto_triage": true,
+      "require_approval_for_sends": true
+    }
+  }
+}

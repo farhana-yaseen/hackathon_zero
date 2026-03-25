@@ -1,0 +1,88 @@
+# Vault Security - Git Ignore Rules
+# CRITICAL: These files must NEVER be synced to Git
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+
+# Authentication tokens and credentials
+token.pickle
+*token*.json
+*credential*.json
+credentials.json
+*secret*.json
+*secrets*.json
+
+# API keys and passwords
+*apikey*
+*api_key*
+*password*
+banking_credentials.json
+payment_tokens.json
+
+# Session data
+WhatsApp_Session/
+*session*
+*.session
+
+# OAuth and authentication
+*.pickle
+oauth_token*
+
+# Private keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs (optional - comment out if you want to sync logs)
+# Logs/*.log
+# Error_Reports/*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Node modules (if any)
+node_modules/
+
+# Test files
+test_*.json
+*_test.json
+
+# Specific sensitive directories
+WhatsApp_Sim/*.json
+LinkedIn_Triggers/*.json
+
+# Keep directory structure but ignore sensitive content
+!.gitkeep

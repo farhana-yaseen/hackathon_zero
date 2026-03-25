@@ -1,0 +1,26 @@
+{
+  "a2a": {
+    "enabled": true,
+    "server": {
+      "host": "127.0.0.1",
+      "port": 8090,
+      "use_https": false
+    },
+    "cloud_agent": {
+      "url": "https://YOUR_CLOUD_DOMAIN.com/a2a/v1",
+      "fallback_to_vault": true
+    },
+    "auth": {
+      "secret_key_env": "A2A_SECRET_KEY"
+    },
+    "timeouts": {
+      "message_timeout_seconds": 30,
+      "heartbeat_interval_seconds": 300
+    },
+    "features": {
+      "auto_approve_low_risk": false,
+      "notification_sound": true,
+      "approval_ui_enabled": true
+    }
+  }
+}
